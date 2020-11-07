@@ -10,9 +10,20 @@ class Map:
         self.position = {}
 
     def area(self, area):
+        """# generate a list of dict where keys = position abs and ordo and 
+        values the caracter in labyrinth file"""
         with open(area, "r") as map_file:
-            zone = map_file.read()
-            return zone
+            zone = map_file.read().split()
+            list_zone = []
+            abs_map = 0
+            ordo_map = 0
+            for i in zone:
+                for i in zone:
+                    list_zone.append({(abs_map, ordo_map):zone[ordo_map][abs_map]})
+                    abs_map += 1
+                ordo_map += 1
+                abs_map = 0
+            return list_zone
 
 
 class Character:
@@ -42,18 +53,7 @@ class Character:
 
 
 test_map = Map()
-print(test_map.area("laby.txt"))
-list_map = test_map.area("laby.txt").split()
+list_map = test_map.area("laby.txt")
 print(list_map)
-list_position_on_map = []
 
-# generate a list of dict where keys = position abs and ordo and values the caracter in labyrinth file
-abs_map = 0
-ordo_map = 0
-for i in list_map:
-    for i in list_map:
-        list_position_on_map.append({(abs_map, ordo_map):list_map[ordo_map][abs_map]})
-        abs_map += 1
-    ordo_map += 1
-    abs_map = 0
-print(list_position_on_map)
+
