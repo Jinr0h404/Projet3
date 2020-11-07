@@ -46,7 +46,14 @@ print(test_map.area("laby.txt"))
 list_map = test_map.area("laby.txt").split()
 print(list_map)
 list_position_on_map = []
-print(list_map[0][0])
-testDic = list_map[0][0]
-list_position_on_map = [{list_map[0][0]:testDic}]
+
+# generate a list of dict where keys = position abs and ordo and values the caracter in labyrinth file
+abs_map = 0
+ordo_map = 0
+for i in list_map:
+    for i in list_map:
+        list_position_on_map.append({(abs_map, ordo_map):list_map[ordo_map][abs_map]})
+        abs_map += 1
+    ordo_map += 1
+    abs_map = 0
 print(list_position_on_map)
