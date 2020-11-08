@@ -57,3 +57,25 @@ list_map = test_map.area("laby.txt")
 print(list_map)
 
 
+
+
+"""test to assign random position to an object
+in first we search each position is floor(not wall or start or finish)"""
+
+test = list_map[1]
+print(test)
+print(test.values(), test.keys())
+testCapt = test.keys()
+print(testCapt)
+test_values = test.values()
+print(test_values)
+
+
+list_possible_position = []
+for i in list_map:
+    dico = i
+    for i in dico.values():
+        if i == "O":
+            list_possible_position.append(dico)
+print(list_possible_position)
+
