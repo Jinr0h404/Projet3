@@ -53,7 +53,7 @@ class Character:
 
 
 test_map = Map()
-list_map = test_map.area("laby.txt")
+list_map = test_map.area("data/level/laby.txt")
 print(list_map)
 
 
