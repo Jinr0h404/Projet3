@@ -17,6 +17,7 @@ list_wall = [(10, 10),(30, 30), (50,50)]
 continuer = True
 
 while continuer:
+
     ecran.blit(picture_floor, list_wall[2])
     ecran.blit(picture_macgy, (0, 0)) # le tuple 0,0 donne la position de départ de l'image
     for event in pygame.event.get():
