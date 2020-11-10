@@ -94,7 +94,13 @@ print(list_floor_position)
 
 
 """ici je vais convertir mes listes de position sol et mur en coordonnée de pixel"""
-
+list_wall_position_px = []
+list_floor_position_px = []
+# comme je suis parti sur des surface de 45px pour mes tuiles, je multiplie mes abs et mes ordo par 45
+for element in list_wall_position:
+    list_wall_position_px.append((element[0]*45, element[1] * 45))
+for element in list_floor_position:
+    list_floor_position_px.append((element[0]*45, element[1] * 45))
 
 
 
@@ -120,20 +126,14 @@ rect_floor = picture_floor.get_rect()
 rect_wall = picture_wall.get_rect()
 
 
-
-list_wall = [(10, 10),(30, 30), (50,50), (90,90), (120,120), (150, 150)]
-
 continuer = True
 
 while continuer: 
     ecran.fill(noir) # definit une couleur de fond pour l'ecran
-    for element in list_wall:
-        ecran.blit(picture_floor, (element))
-    for element in list_wall_position:
+    for element in list_wall_position_px:
         ecran.blit(picture_wall, element)
-    for element in list_floor_position:
-        ecran.blit(picture_floor, element)
-    ecran.blit(picture_floor, list_wall[2]) # blit copie l'image_surface en parametre sur la surface de l'ecran
+    for element in list_floor_position_px:
+        ecran.blit(picture_floor, element) # blit copie l'image_surface en parametre sur la surface de l'ecran
     ecran.blit(picture_macgy, (0, 0, 20, 20)) # le tuple 0,0 donne la position de départ de l'image
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
