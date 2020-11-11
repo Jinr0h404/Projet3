@@ -76,6 +76,9 @@ print(test_values)
 list_possible_position = []
 list_wall_position = []
 list_floor_position = []
+list_start_position = []
+list_finish_position = []
+
 for i in list_map:       # pour chaque element de ma liste de dictionnaire
     dico = i
     print(dico)
@@ -85,6 +88,12 @@ for i in list_map:       # pour chaque element de ma liste de dictionnaire
             list_possible_position.append(dico) # si valeur == O alors j'ajoute le dico a la liste possible
             for key in dico.keys():
                 list_floor_position.append(key)   # et je met la clef du dico donc sa position dans la liste des positions de sol
+        elif i =="D":
+            for key in dico.keys():
+                list_start_position.append(key)
+        elif i == "A":
+            for key in dico.keys():
+                list_finish_position.append(key)
         else:
             for key in dico.keys():
                 list_wall_position.append(key)  # et je mets le reste des clefs donc les positions de murs, dans la liste des positions de mur
@@ -96,11 +105,17 @@ print(list_floor_position)
 """ici je vais convertir mes listes de position sol et mur en coordonnée de pixel"""
 list_wall_position_px = []
 list_floor_position_px = []
+list_start_position_px = []
+list_finish_position_px = []
 # comme je suis parti sur des surface de 45px pour mes tuiles, je multiplie mes abs et mes ordo par 45
 for element in list_wall_position:
     list_wall_position_px.append((element[0]*45, element[1] * 45))
 for element in list_floor_position:
     list_floor_position_px.append((element[0]*45, element[1] * 45))
+for element in list_start_position:
+    list_start_position_px.append((element[0]*45, element[1] * 45))
+for element in list_finish_position:
+    list_finish_position_px.append((element[0]*45, element[1] * 45))
 
 
 
@@ -120,6 +135,7 @@ noir = (10, 10, 10)
 picture_macgy = pygame.image.load("data/MacGyver.png").convert_alpha() # cherche et tranforme l'image en surface puis la converti
 picture_floor = pygame.image.load("data/floor15.png").convert_alpha()
 picture_wall = pygame.image.load("data/wall15.png").convert_alpha()
+picture_finish = pygame.image.load("data/stair45.png").convert_alpha()
 
 rect_macgy = picture_macgy.get_rect()
 rect_floor = picture_floor.get_rect()
@@ -134,6 +150,10 @@ while continuer:
         ecran.blit(picture_wall, element)
     for element in list_floor_position_px:
         ecran.blit(picture_floor, element) # blit copie l'image_surface en parametre sur la surface de l'ecran
+    for element in list_start_position_px:
+        ecran.blit(picture_floor, element)
+    for element in list_finish_position_px:
+        ecran.blit(picture_finish, element)
     ecran.blit(picture_macgy, (0, 0, 20, 20)) # le tuple 0,0 donne la position de départ de l'image
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
