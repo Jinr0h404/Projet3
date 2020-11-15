@@ -1,6 +1,6 @@
 import pygame
 
-def playgame(start_pos, finish_pos, wall_pos, floor_pos, bad_guy_pos):
+def playgame(start_pos, finish_pos, wall_pos, floor_pos, bad_guy_pos, aiguille_pos, ether_pos, tube_pos, item_pos):
     pygame.init()
 
     ecran = pygame.display.set_mode((675, 675))
@@ -16,6 +16,9 @@ def playgame(start_pos, finish_pos, wall_pos, floor_pos, bad_guy_pos):
     picture_floor = pygame.image.load("data/floor15.png").convert_alpha()
     picture_wall = pygame.image.load("data/wall15.png").convert_alpha()
     picture_finish = pygame.image.load("data/stair45.png").convert_alpha()
+    picture_tube = pygame.image.load("data/tube45.png").convert_alpha()
+    picture_aiguille = pygame.image.load("data/aiguille45.png").convert_alpha()
+    picture_ether = pygame.image.load("data/ether45.png").convert_alpha()
 
     rect_macgy = picture_macgy.get_rect()
     rect_floor = picture_floor.get_rect()
@@ -36,6 +39,9 @@ def playgame(start_pos, finish_pos, wall_pos, floor_pos, bad_guy_pos):
             ecran.blit(picture_finish, element)
         for element in bad_guy_pos:
             ecran.blit(picture_badguy, element)
+        ecran.blit(picture_ether, item_pos[0])
+        ecran.blit(picture_aiguille, item_pos[1])
+        ecran.blit(picture_tube, item_pos[2])
         ecran.blit(picture_macgy, (0, 0)) # le tuple 0,0 donne la position de départ de l'image
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

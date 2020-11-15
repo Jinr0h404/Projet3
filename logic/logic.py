@@ -29,7 +29,7 @@ class Map:
 class Character:
     """ Character class allow to create obj character with position attribute
     and move method"""
-    def __init__(self, name, first_position):
+    def __init__(self, name, position):
         self.name = name
         self.position = first_position
         
@@ -64,5 +64,5 @@ class Badguy(Character):
 
 class Item:
 
-    def __init__(self, random_position):
-        self.position = random_position
+    def __init__(self, position):
+        self.position = position
