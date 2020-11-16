@@ -77,7 +77,7 @@ for element in bad_guy_position:
 
 print(bad_guy_position_px)
 """generate character"""
-mac_gyver = logic.logic.Mac()
+mac_gyver = logic.logic.Mac((0,0))
 #bad_guy = logic.logic.Mac("BadGuy", bad_guy_position_px)
 
 

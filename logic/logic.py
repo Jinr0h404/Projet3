@@ -31,14 +31,15 @@ class Character:
     and move method"""
     def __init__(self, name, position):
         self.name = name
-        self.position = first_position
+        self.position = position
         
 
 
 class Mac(Character):
 
-    def __init__(self):
+    def __init__(self, position):
         self.item = {"aiguille":False, "ether":False,"tube":False} 
+        Character.__init__(self, "MacGyver", position)
         # move methode check if sprite is with an item, if yes, change
         # value of dict "item" to true with item key
         # for the last move if all item value != True, it's lost
