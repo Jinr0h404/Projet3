@@ -91,13 +91,15 @@ aiguille = logic.logic.Item(position_random(list_possible_position_px))
 ether = logic.logic.Item(position_random(list_possible_position_px))
 item = [tube.position, aiguille.position, ether.position]
 ether_pos_px = ether.position
+tube_pos_px = tube.position
+aiguille_pos_px = aiguille.position
 print(tube.position)
 print(aiguille.position)
 print(ether.position)
 print(item)
 print(ether_pos_px)
 
-graphic.graphic.playgame(list_start_position_px, list_finish_position_px, list_wall_position_px, list_floor_position_px, bad_guy_position_px, aiguille, ether, tube, item)
+graphic.graphic.playgame(list_start_position_px, list_finish_position_px, list_wall_position_px, list_floor_position_px, bad_guy_position_px, aiguille_pos_px, ether_pos_px, tube_pos_px, item)
 
 
 
