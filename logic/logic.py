@@ -19,6 +19,7 @@ class Map:
             list_zone = []
             abs_map = 0
             ordo_map = 0
+            # add each element of the file in the list and convert directly abs and ordo in sprite size 45px
             for i in zone:
                 for i in zone:
                     list_zone.append({(abs_map*self.sprite_size, ordo_map*self.sprite_size):zone[ordo_map][abs_map]})
@@ -26,6 +27,21 @@ class Map:
                 ordo_map += 1
                 abs_map = 0
             return list_zone
+
+    @property
+    def list_floor(self, list_map):
+        list_floor_positionTest = []
+        for i in list_map:       # pour chaque element de ma liste de dictionnaire
+            dico = i
+            print(dico)
+            for i in dico.values(): # je recupere la valeur de mon dico
+                print(i)
+                if i == "O":
+                    for key in dico.keys():
+                        list_floor_positionTest.append(key)   # et je met la clef du dico donc sa position dans la liste des positions de sol
+                        #list_possible_position.append(key)
+        return list_floor_positionTest
+    
 
 
 class Character:

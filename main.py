@@ -27,6 +27,8 @@ list_floor_position = []
 list_start_position = []
 list_finish_position = []
 bad_guy_position = []
+#list_test_toto = test_map.area("data/level/laby.txt").list_floor(list_map)
+#print(list_test_toto)
 
 for i in list_map:       # pour chaque element de ma liste de dictionnaire
     dico = i
