@@ -53,53 +53,26 @@ for i in list_map:       # pour chaque element de ma liste de dictionnaire
                 list_wall_position.append(key)  # et je mets le reste des clefs donc les positions de murs, dans la liste des positions de mur
 
 
-"""ici je vais convertir mes listes de position sol et mur en coordonnée de pixel"""
-list_possible_position_px = []
-list_wall_position_px = []
-list_floor_position_px = []
-list_start_position_px = []
-list_finish_position_px = []
-bad_guy_position_px = []
-
-# comme je suis parti sur des surface de 45px pour mes tuiles, je multiplie mes abs et mes ordo par 45
-for element in list_possible_position:
-    list_possible_position_px.append((element[0]*45, element[1] * 45))
-for element in list_wall_position:
-    list_wall_position_px.append((element[0]*45, element[1] * 45))
-for element in list_floor_position:
-    list_floor_position_px.append((element[0]*45, element[1] * 45))
-for element in list_start_position:
-    list_start_position_px.append((element[0]*45, element[1] * 45))
-for element in list_finish_position:
-    list_finish_position_px.append((element[0]*45, element[1] * 45))
-for element in bad_guy_position:
-    bad_guy_position_px.append((element[0]*45, element[1] * 45))
-
-print(bad_guy_position_px)
 """generate character"""
 mac_gyver = logic.logic.Mac((0,0))
 #bad_guy = logic.logic.Mac("BadGuy", bad_guy_position_px)
 
 
-"""generate item with random position"""
-def position_random(list_possible_position):
-    position_random = random.choice(list_possible_position_px)
-    return position_random
-
-tube = logic.logic.Item(position_random(list_possible_position_px))
-aiguille = logic.logic.Item(position_random(list_possible_position_px))
-ether = logic.logic.Item(position_random(list_possible_position_px))
-item = [tube.position, aiguille.position, ether.position]
-ether_pos_px = ether.position
-tube_pos_px = tube.position
-aiguille_pos_px = aiguille.position
+#item
+tube = logic.logic.Item()
+aiguille = logic.logic.Item()
+ether = logic.logic.Item()
+#item = [tube.position, aiguille.position, ether.position]
+ether_pos_px = ether.position_random(list_possible_position)
+tube_pos_px = tube.position_random(list_possible_position)
+aiguille_pos_px = aiguille.position_random(list_possible_position)
 print(tube.position)
 print(aiguille.position)
 print(ether.position)
-print(item)
+#print(item)
 print(ether_pos_px)
 
-graphic.graphic.playgame(list_start_position_px, list_finish_position_px, list_wall_position_px, list_floor_position_px, bad_guy_position_px, aiguille_pos_px, ether_pos_px, tube_pos_px, item)
+graphic.graphic.playgame(list_start_position, list_finish_position, list_wall_position, list_floor_position, bad_guy_position, aiguille_pos_px, ether_pos_px, tube_pos_px)
 
 
 
