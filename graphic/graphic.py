@@ -1,6 +1,6 @@
 import pygame
 
-def playgame(start_pos, finish_pos, wall_pos, floor_pos, bad_guy_pos, aiguille_pos, ether_pos, tube_pos, item_pos):
+def playgame(start_pos, finish_pos, wall_pos, floor_pos, bad_guy_pos, aiguille_pos, ether_pos, tube_pos):
     pygame.init()
 
     ecran = pygame.display.set_mode((675, 675))
@@ -36,6 +36,7 @@ def playgame(start_pos, finish_pos, wall_pos, floor_pos, bad_guy_pos, aiguille_p
         for element in start_pos:
             ecran.blit(picture_floor, element)
         for element in finish_pos:
+            ecran.blit(picture_floor, element)
             ecran.blit(picture_finish, element)
         for element in bad_guy_pos:
             ecran.blit(picture_badguy, element)

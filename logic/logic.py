@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 # coding: utf-8
 import pygame
+import random
 
 class Map:
     """ there is one level but if we want other in futur, use a class for
@@ -8,6 +9,7 @@ class Map:
 
     def __init__(self):
         self.position = {}
+        self.sprite_size = 45
 
     def area(self, area):
         """# generate a list of dict where keys = position abs and ordo and 
@@ -19,7 +21,7 @@ class Map:
             ordo_map = 0
             for i in zone:
                 for i in zone:
-                    list_zone.append({(abs_map, ordo_map):zone[ordo_map][abs_map]})
+                    list_zone.append({(abs_map*self.sprite_size, ordo_map*self.sprite_size):zone[ordo_map][abs_map]})
                     abs_map += 1
                 ordo_map += 1
                 abs_map = 0
@@ -65,5 +67,10 @@ class Badguy(Character):
 
 class Item:
 
-    def __init__(self, position):
-        self.position = position
+    def __init__(self):
+        self.position = ()
+
+    """generate item with random position"""
+    def position_random(self, list_possible_position):
+        position_random = random.choice(list_possible_position)
+        return position_random
