@@ -8,7 +8,8 @@ class Map:
         generate other map"""
 
     def __init__(self):
-        self.position = {}
+        self.list_zone = []
+        self._pos_floor = []
         self.sprite_size = 45
 
     def area(self, area):
@@ -28,10 +29,28 @@ class Map:
                 abs_map = 0
             return list_zone
 
+    def test_area(self, area):
+        """# generate a list of dict where keys = position abs and ordo and 
+        values the caracter in labyrinth file"""
+        with open(area, "r") as map_file:
+            zone = map_file.read().split()
+            list_zone = []
+            abs_map = 0
+            ordo_map = 0
+            # add each element of the file in the list and convert directly abs and ordo in sprite size 45px
+            for i in zone:
+                for i in zone:
+                    list_zone.append({(abs_map*self.sprite_size, ordo_map*self.sprite_size):zone[ordo_map][abs_map]})
+                    abs_map += 1
+                ordo_map += 1
+                abs_map = 0
+            self.list_zone = list_zone
+            return list_zone
+
     @property
-    def list_floor(self, list_map):
+    def list_floor(self):
         list_floor_positionTest = []
-        for i in list_map:       # pour chaque element de ma liste de dictionnaire
+        for i in self.list_zone:       # pour chaque element de ma liste de dictionnaire
             dico = i
             print(dico)
             for i in dico.values(): # je recupere la valeur de mon dico
@@ -40,7 +59,8 @@ class Map:
                     for key in dico.keys():
                         list_floor_positionTest.append(key)   # et je met la clef du dico donc sa position dans la liste des positions de sol
                         #list_possible_position.append(key)
-        return list_floor_positionTest
+        _pos_floor = list_floor_positionTest
+        return self._pos_floor
     
 
 
