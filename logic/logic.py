@@ -59,7 +59,7 @@ class Map:
                     for key in dico.keys():
                         list_floor_positionTest.append(key)   # et je met la clef du dico donc sa position dans la liste des positions de sol
                         #list_possible_position.append(key)
-        _pos_floor = list_floor_positionTest
+        self._pos_floor = list_floor_positionTest
         return self._pos_floor
     
 

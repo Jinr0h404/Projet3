@@ -12,9 +12,13 @@ import graphic.graphic
 
 test_map = logic.logic.Map()
 list_map = test_map.area("data/level/laby.txt")
-
-
-
+print(test_map.list_zone)
+print(list_map)
+list_test_toto = test_map.test_area("data/level/laby.txt")
+print(list_test_toto)
+print(test_map.list_zone)
+print(test_map.list_floor)
+print("voilq pour le test")
 """test to assign random position to an object
 in first we search each position is floor(not wall or start or finish)"""
 
