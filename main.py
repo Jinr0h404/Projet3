@@ -8,87 +8,43 @@ import graphic.graphic
 
 
 
-"""generate map with the file txt of the labyrinth"""
+"""generate obj map"""
 
 test_map = logic.logic.Map()
-list_map = test_map.area("data/level/laby.txt")
-print(test_map.list_zone)
-print(list_map)
+
+"""generate all zone map with the file txt of the labyrinth"""
 list_test_toto = test_map.test_area("data/level/laby.txt")
 print(list_test_toto)
 print(test_map.list_zone)
 print(test_map.list_floor)
-print("voilq pour le test")
-"""test to assign random position to an object
-in first we search each position is floor(not wall or start or finish)"""
+print("voilà pour le test")
 
-
-
-list_possible_position_old = []
-list_possible_position = []
-list_wall_position = []
-list_floor_position = []
-list_start_position = []
-list_finish_position = []
-bad_guy_position = []
-#list_test_toto = test_map.area("data/level/laby.txt")
-#list_test_tata = list_test_toto.list_floor(list_map)
-#list_test_toto.test_area("data/level/laby.txt")
-#print(list_test_toto.list_zone)
-#print(list_test_toto.list_floor)
-
-for i in list_map:       # pour chaque element de ma liste de dictionnaire
-    dico = i
-    print(dico)
-    for i in dico.values(): # je recupere la valeur de mon dico
-        print(i)
-        if i == "O":
-            list_possible_position_old.append(dico) # si valeur == O alors j'ajoute le dico a la liste possible
-            for key in dico.keys():
-                list_floor_position.append(key)   # et je met la clef du dico donc sa position dans la liste des positions de sol
-                list_possible_position.append(key)
-        elif i =="D":
-            for key in dico.keys():
-                list_start_position.append(key)
-        elif i == "A":
-            for key in dico.keys():
-                list_finish_position.append(key)
-        elif i == "B":
-            for key in dico.keys():
-                bad_guy_position.append(key)
-                list_floor_position.append(key)
-        else:
-            for key in dico.keys():
-                list_wall_position.append(key)  # et je mets le reste des clefs donc les positions de murs, dans la liste des positions de mur
 
 
 """generate character"""
-mac_gyver = logic.logic.Mac((0,0))
-#bad_guy = logic.logic.Mac("BadGuy", bad_guy_position_px)
+#mac_gyver = logic.logic.Mac((0,0))
+mac_gyver = logic.logic.Mac(test_map.list_start)
+print(mac_gyver.position[0])
+bad_guy = logic.logic.Mac(test_map.list_badguy)
 
 
 #item
+"""assign random position to an object"""
 tube = logic.logic.Item()
 aiguille = logic.logic.Item()
 ether = logic.logic.Item()
-#item = [tube.position, aiguille.position, ether.position]
-ether_pos_px = ether.position_random(list_possible_position)
-tube_pos_px = tube.position_random(list_possible_position)
-aiguille_pos_px = aiguille.position_random(list_possible_position)
-print(tube.position)
-print(aiguille.position)
+
+ether_pos_px = ether.position_random(test_map.list_item)
+tube_pos_px = tube.position_random(test_map.list_item)
+aiguille_pos_px = aiguille.position_random(test_map.list_item)
 print(ether.position)
-#print(item)
 print(ether_pos_px)
-
-graphic.graphic.playgame(list_start_position, list_finish_position, list_wall_position, list_floor_position, bad_guy_position, aiguille_pos_px, ether_pos_px, tube_pos_px)
-
 
 
 
 def main():
-    pass
 
+    graphic.graphic.playgame(test_map.list_start, test_map.list_finish, test_map.list_wall, test_map.list_floor, test_map.list_badguy, aiguille_pos_px, ether_pos_px, tube_pos_px)
 
 
 if __name__ == "__main__":  #execute la fonction main de ce fichier si il est
