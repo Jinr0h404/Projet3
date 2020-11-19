@@ -14,10 +14,11 @@ test_map = logic.logic.Map()
 
 """generate all zone map with the file txt of the labyrinth"""
 list_test_toto = test_map.test_area("data/level/laby.txt")
-print(list_test_toto)
-print(test_map.list_zone)
-print(test_map.list_floor)
-print("voilà pour le test")
+
+#print(list_test_toto)
+#print(test_map.list_zone)
+#print(test_map.list_floor)
+#print("voilà pour le test")
 
 
 
