@@ -156,17 +156,21 @@ class Mac(Character):
         # for the last move if all item value != True, it's lost
 
     def move_up(self):
-#self.position = self.position[1] += 1 if position define by list of 2 item abs and ordo
-        pass
+        # position list for mac have just 1 element, tuple. change valeur of Y
+        self.position = [(self.position[0][0], self.position[0][1] - 45)] #if position define by list of 2 item abs and ordo
+        return self.position
 
-    def move_down(self, input_key):
-        pass
+    def move_down(self):
+        self.position = [(self.position[0][0], self.position[0][1] + 45)]
+        return self.position
 
-    def move_left(self, input_key):
-        pass
+    def move_left(self):
+        self.position = [(self.position[0][0] - 45, self.position[0][1])] 
+        return self.position
 
-    def move_right(self, input_key):
-        pass
+    def move_right(self):
+        self.position = [(self.position[0][0] + 45, self.position[0][1])] 
+        return self.position
 
 
 class Badguy(Character):
