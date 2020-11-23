@@ -1,6 +1,20 @@
 import pygame
+import logic.logic
 
-def playgame(start_pos, finish_pos, wall_pos, floor_pos, bad_guy_pos, aiguille_pos, ether_pos, tube_pos):
+
+class Screen:
+    def __init__(self):
+        self.screen_size = (675, 675)
+        self.title = "Help MacGyver"
+        self.picture_title = "data/projet_3.png"
+
+    def set_screen(self):
+        screen_size = pygame.display.set_mode(self.screen_size)
+        pygame.display.set_caption(self.title)
+        picture_menu = pygame.image.load(self.picture_tile).convert_alpha()
+        pygame.display.set_icon(self.picture_title)
+
+def playgame(start_pos, finish_pos, wall_pos, floor_pos, mac_pos, bad_guy_pos, aiguille_pos, ether_pos, tube_pos):
     pygame.init()
 
     ecran = pygame.display.set_mode((675, 675))
@@ -46,12 +60,17 @@ def playgame(start_pos, finish_pos, wall_pos, floor_pos, bad_guy_pos, aiguille_p
         #ecran.blit(picture_aiguille, item_pos[1])
         ecran.blit(picture_tube, tube_pos)
         #ecran.blit(picture_tube, item_pos[2])
-        ecran.blit(picture_macgy, (0, 0)) # le tuple 0,0 donne la position de départ de l'image
+        #ecran.blit(picture_macgy, (0, 0)) # le tuple 0,0 donne la position de départ de l'image
+        for element in mac_pos:
+            ecran.blit(picture_macgy, element)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 continuer = False
             if event.type  == pygame.KEYDOWN:
                 if event.key == pygame.K_DOWN:
+                    for element in mac_pos:
+                        mac_pos.move_down()
+                elif event.key == pygame.K_UP:
                     pass
         pygame.display.flip() # dit à pygame d'afficher la surface du jeu
 
