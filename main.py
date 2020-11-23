@@ -27,14 +27,13 @@ bad_guy = logic.logic.Badguy(test_map.list_badguy)
 print("voici la position de badGuy", test_map.list_badguy)
 #mac_gyver = logic.logic.Mac((0,0))
 mac_gyver = logic.logic.Mac(test_map.list_start, test_map.list_floor)
-print(mac_gyver.position[0])
-print("il est maintenant en ", mac_gyver.position)
+
 mac_gyver.move_right()
-print("il est maintenant en ", mac_gyver.position)
+
 mac_gyver.move_right()
-print("il est maintenant en ", mac_gyver.position)
+
 mac_gyver.move_right()
-print("il est maintenant en ", mac_gyver.position)
+
 print(mac_gyver.list_move)
 mac_gyver.move_down()
 print("test separation")
