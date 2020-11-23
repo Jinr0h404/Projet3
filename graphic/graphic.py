@@ -70,6 +70,7 @@ def playgame(start_pos, finish_pos, wall_pos, floor_pos, mac_pos, bad_guy_pos, a
                 if event.key == pygame.K_DOWN:
                     for element in mac_pos:
                         mac_pos.move_down()
+                        pass
                 elif event.key == pygame.K_UP:
                     pass
         pygame.display.flip() # dit à pygame d'afficher la surface du jeu

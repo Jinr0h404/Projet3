@@ -117,7 +117,7 @@ class Map:
                     for key in dico.keys():
                         list_badguy_positionTest.append(key)   # et je met la clef du dico donc sa position dans la liste des positions de sol
                         #list_possible_position.append(key)
-        self._pos_finish = list_badguy_positionTest
+        self._pos_badguy = list_badguy_positionTest
         return self._pos_badguy
 
     """method to assign position to an object in first we search each position is possible(not wall or start or finish or badguy pos)"""
@@ -148,8 +148,9 @@ class Character:
 
 class Mac(Character):
 
-    def __init__(self, position):
-        self.item = {"aiguille":False, "ether":False,"tube":False} 
+    def __init__(self, position, floor):
+        self.item = {"aiguille":False, "ether":False,"tube":False}
+        self.list_move = floor 
         Character.__init__(self, "MacGyver", position)
         # move methode check if sprite is with an item, if yes, change
         # value of dict "item" to true with item key
@@ -157,6 +158,11 @@ class Mac(Character):
 
     def move_up(self):
         # position list for mac have just 1 element, tuple. change valeur of Y
+        possible_move = self.list_move
+        if (self.position[0][0], self.position[0][1] - 45) in possible_move:
+            print("yes")
+        else:
+            print("nop y'a pas")
         self.position = [(self.position[0][0], self.position[0][1] - 45)] #if position define by list of 2 item abs and ordo
         return self.position
 
@@ -169,13 +175,18 @@ class Mac(Character):
         return self.position
 
     def move_right(self):
-        self.position = [(self.position[0][0] + 45, self.position[0][1])] 
+        wanted_move = (self.position[0][0] + 45, self.position[0][1])
+        possible_move = self.list_move
+        if wanted_move in possible_move:
+            self.position = [wanted_move]
+        else:
+            print("si seulement j'avais mon couteau pour percer ce mur") 
         return self.position
 
 
 class Badguy(Character):
 
-    def __init__(self):
+    def __init__(self, position):
         Character.__init__(self, "BadGuy", position)
 
 
