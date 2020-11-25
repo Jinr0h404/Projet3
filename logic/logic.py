@@ -186,10 +186,13 @@ class Badguy(Character):
 
 class Item:
 
-    def __init__(self):
-        self.position = ()
-
+    def __init__(self, list_possible_position):
+        self.position = list_possible_position
+        self._position_item = []
     """generate item with random position"""
-    def position_random(self, list_possible_position):
-        position_random = random.choice(list_possible_position)
-        return position_random
+    @property
+    def position_random(self):
+        position_random = random.sample(self.position, 3)
+        liste_pos_item = {"ether": position_random[0], "aiguille":position_random[1], "tube":position_random[2]}
+        self._position_item = liste_pos_item
+        return self._position_item
