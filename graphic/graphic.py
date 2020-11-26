@@ -12,7 +12,7 @@ black = (10, 10, 10)
 
 class Screen:
     def __init__(self):
-        self.screen_size = (675, 675)
+        self.screen_size = (825, 675)
         self.title = "Help MacGyver"
         self.picture_title = "data/projet_3.png"
 
@@ -30,12 +30,16 @@ class Game:
         pygame.init()
 
         
-
+        #screen.set_screen()
         screen_size = pygame.display.set_mode(screen.screen_size)
         pygame.display.set_caption(screen.title)
         picture_menu = pygame.image.load(screen.picture_title).convert_alpha()
         pygame.display.set_icon(picture_menu)
 
+        #affichage inventaire#
+        font = pygame.font.Font(None, 24)
+        text = font.render("inventaire \n Ether: {} \n Tube: {} \n Aiguille: {}".format('0','0','0'), 1, (250, 250, 250))
+        
 
         picture_macgy = pygame.image.load("data/MacGyver.png").convert_alpha() # cherche et tranforme l'image en surface puis la converti
         picture_badguy = pygame.image.load("data/gardien.png").convert_alpha()
@@ -64,6 +68,7 @@ class Game:
             screen_size.blit(picture_ether, item["ether"])
             screen_size.blit(picture_aiguille, item["aiguille"])
             screen_size.blit(picture_tube, item["tube"])
+            screen_size.blit(text, (680,0))
             for element in mac.position:
                 screen_size.blit(picture_macgy, element)
             for event in pygame.event.get():
