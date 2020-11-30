@@ -17,14 +17,16 @@ def main():
     """generate all zone map with the file txt of the labyrinth"""
     game_map_position = game_map.area("data/level/laby.txt")
 
-    """generate character"""
-    bad_guy = logic.logic.Badguy(game_map.list_badguy)
-    mac_gyver = logic.logic.Mac(game_map.list_start, game_map.list_floor)
-
 
     """generate item"""
     item = logic.logic.Item(game_map.list_item)
     item_position = item.position_random
+
+    """generate character"""
+    bad_guy = logic.logic.Badguy(game_map.list_badguy)
+    mac_gyver = logic.logic.Mac(game_map.list_start, game_map.list_floor, item_position)
+
+
 
     """generate graphic setting"""
     screen = graphic.graphic.Screen()

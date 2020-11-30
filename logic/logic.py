@@ -132,9 +132,10 @@ class Character:
 
 class Mac(Character):
 
-    def __init__(self, position, floor):
+    def __init__(self, position, floor, item_pos):
         self.item = {"aiguille":False, "ether":False,"tube":False}
-        self.list_move = floor 
+        self.list_move = floor
+        self.item_pos = item_pos
         Character.__init__(self, "MacGyver", position)
         # move methode check if sprite is with an item, if yes, change
         # value of dict "item" to true with item key
@@ -146,6 +147,11 @@ class Mac(Character):
         possible_move = self.list_move
         if wanted_move in possible_move:
             self.position = [wanted_move] #if position define by list of 2 item abs and ordo
+            for key, value in self.item_pos.items():
+                if value == self.position[0]:
+                    self.item[key] = True
+                    print(self.item)
+                    
         else:
             print("si seulement j'avais mon couteau pour percer ce mur") 
         return self.position
@@ -155,6 +161,10 @@ class Mac(Character):
         possible_move = self.list_move
         if wanted_move in possible_move:
             self.position = [wanted_move]
+            for key, value in self.item_pos.items():
+                if value == self.position[0]:
+                    self.item[key] = True
+                    print(self.item)
         else:
             print("si seulement j'avais mon couteau pour percer ce mur") 
         return self.position
@@ -164,6 +174,10 @@ class Mac(Character):
         possible_move = self.list_move
         if wanted_move in possible_move:
             self.position = [wanted_move]
+            for key, value in self.item_pos.items():
+                if value == self.position[0]:
+                    self.item[key] = True
+                    print(self.item)
         else:
             print("si seulement j'avais mon couteau pour percer ce mur") 
         return self.position
@@ -173,6 +187,10 @@ class Mac(Character):
         possible_move = self.list_move
         if wanted_move in possible_move:
             self.position = [wanted_move]
+            for key, value in self.item_pos.items():
+                if value == self.position[0]:
+                    self.item[key] = True
+                    print(self.item)
         else:
             print("si seulement j'avais mon couteau pour percer ce mur") 
         return self.position

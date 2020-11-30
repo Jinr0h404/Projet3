@@ -12,7 +12,7 @@ black = (10, 10, 10)
 
 class Screen:
     def __init__(self):
-        self.screen_size = (825, 675)
+        self.screen_size = (675, 705)
         self.title = "Help MacGyver"
         self.picture_title = "data/projet_3.png"
 
@@ -68,7 +68,7 @@ class Game:
             screen_size.blit(picture_ether, item["ether"])
             screen_size.blit(picture_aiguille, item["aiguille"])
             screen_size.blit(picture_tube, item["tube"])
-            screen_size.blit(text, (680,0))
+            screen_size.blit(text, (0,680))
             for element in mac.position:
                 screen_size.blit(picture_macgy, element)
             for event in pygame.event.get():
