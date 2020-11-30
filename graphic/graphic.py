@@ -49,6 +49,7 @@ class Game:
         picture_tube = pygame.image.load("data/tube45.png").convert_alpha()
         picture_aiguille = pygame.image.load("data/aiguille45.png").convert_alpha()
         picture_ether = pygame.image.load("data/ether45.png").convert_alpha()
+        picture_rip = pygame.image.load("data/rip.png").convert_alpha()
 
         continuer = True
 
@@ -64,7 +65,10 @@ class Game:
                 screen_size.blit(picture_floor, element)
                 screen_size.blit(picture_finish, element)
             for element in bad.position:
-                screen_size.blit(picture_badguy, element)
+                if mac.position == bad.position and mac.item.keys() == True:
+                    screen_size.blit(picture_rip, element)
+                else:
+                    screen_size.blit(picture_badguy, element)
             screen_size.blit(picture_ether, item["ether"])
             screen_size.blit(picture_aiguille, item["aiguille"])
             screen_size.blit(picture_tube, item["tube"])
