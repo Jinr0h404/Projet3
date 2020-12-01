@@ -135,6 +135,7 @@ class Mac(Character):
     def __init__(self, position, floor, item_pos):
         self.item = {"aiguille":False, "ether":False,"tube":False}
         self.list_move = floor
+        self.safe = False
         self.item_pos = item_pos
         Character.__init__(self, "MacGyver", position)
         # move methode check if sprite is with an item, if yes, change
@@ -146,11 +147,19 @@ class Mac(Character):
         wanted_move = (self.position[0][0], self.position[0][1] - 45)
         possible_move = self.list_move
         if wanted_move in possible_move:
+            if wanted_move == possible_move[-1]:
+                if self.safe == False:
+                    print("go start")
+                else:
+                    print("bingo")
             self.position = [wanted_move] #if position define by list of 2 item abs and ordo
             for key, value in self.item_pos.items():
                 if value == self.position[0]:
                     self.item[key] = True
                     print(self.item)
+            if all(value == True for value in self.item.values()):
+                self.safe = True
+                print(self.safe)
                     
         else:
             print("si seulement j'avais mon couteau pour percer ce mur") 
@@ -160,11 +169,19 @@ class Mac(Character):
         wanted_move = (self.position[0][0], self.position[0][1] + 45)
         possible_move = self.list_move
         if wanted_move in possible_move:
+            if wanted_move == possible_move[-1]:
+                if self.safe == False:
+                    print("go start")
+                else:
+                    print("bingo")
             self.position = [wanted_move]
             for key, value in self.item_pos.items():
                 if value == self.position[0]:
                     self.item[key] = True
                     print(self.item)
+            if all(value == True for value in self.item.values()):
+                self.safe = True
+                print(self.safe)
         else:
             print("si seulement j'avais mon couteau pour percer ce mur") 
         return self.position
@@ -173,11 +190,19 @@ class Mac(Character):
         wanted_move = (self.position[0][0] - 45, self.position[0][1])
         possible_move = self.list_move
         if wanted_move in possible_move:
+            if wanted_move == possible_move[-1]:
+                if self.safe == False:
+                    print("go start")
+                else:
+                    print("bingo")
             self.position = [wanted_move]
             for key, value in self.item_pos.items():
                 if value == self.position[0]:
                     self.item[key] = True
                     print(self.item)
+            if all(value == True for value in self.item.values()):
+                self.safe = True
+                print(self.safe)
         else:
             print("si seulement j'avais mon couteau pour percer ce mur") 
         return self.position
@@ -186,11 +211,19 @@ class Mac(Character):
         wanted_move = (self.position[0][0] + 45, self.position[0][1])
         possible_move = self.list_move
         if wanted_move in possible_move:
+            if wanted_move == possible_move[-1]:
+                if self.safe == False:
+                    print("go start")
+                else:
+                    print("bingo")
             self.position = [wanted_move]
             for key, value in self.item_pos.items():
                 if value == self.position[0]:
                     self.item[key] = True
                     print(self.item)
+            if all(value == True for value in self.item.values()):
+                self.safe = True
+                print(self.safe)
         else:
             print("si seulement j'avais mon couteau pour percer ce mur") 
         return self.position

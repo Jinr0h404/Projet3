@@ -24,10 +24,10 @@ class Screen:
 
 class Game:
     def __init__(self):
-        pass
+        pygame.init()
 
     def run(self, logic, mac, bad, item, screen):
-        pygame.init()
+        #pygame.init()
 
         
         #screen.set_screen()
@@ -65,7 +65,7 @@ class Game:
                 screen_size.blit(picture_floor, element)
                 screen_size.blit(picture_finish, element)
             for element in bad.position:
-                if mac.position == bad.position and mac.item.keys() == True:
+                if mac.position == bad.position and mac.safe == True:
                     screen_size.blit(picture_rip, element)
                 else:
                     screen_size.blit(picture_badguy, element)
