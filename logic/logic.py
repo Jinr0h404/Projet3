@@ -132,12 +132,13 @@ class Character:
 
 class Mac(Character):
 
-    def __init__(self, position, floor, item_pos):
+    def __init__(self, position, item_pos):
         self.item = {"aiguille":False, "ether":False,"tube":False}
-        self.list_move = floor
+        self.list_move = position.list_floor
         self.safe = False
         self.item_pos = item_pos
-        Character.__init__(self, "MacGyver", position)
+        self.enemy = position.list_badguy
+        Character.__init__(self, "MacGyver", position.list_start)
         # move methode check if sprite is with an item, if yes, change
         # value of dict "item" to true with item key
         # for the last move if all item value != True, it's lost
@@ -147,12 +148,13 @@ class Mac(Character):
         wanted_move = (self.position[0][0], self.position[0][1] - 45)
         possible_move = self.list_move
         if wanted_move in possible_move:
-            if wanted_move == possible_move[-1]:
+            if wanted_move == self.enemy[0]:
                 if self.safe == False:
                     print("go start")
                 else:
                     print("bingo")
             self.position = [wanted_move] #if position define by list of 2 item abs and ordo
+            print(self.enemy)
             for key, value in self.item_pos.items():
                 if value == self.position[0]:
                     self.item[key] = True
@@ -169,7 +171,7 @@ class Mac(Character):
         wanted_move = (self.position[0][0], self.position[0][1] + 45)
         possible_move = self.list_move
         if wanted_move in possible_move:
-            if wanted_move == possible_move[-1]:
+            if wanted_move == self.enemy[0]:
                 if self.safe == False:
                     print("go start")
                 else:
@@ -190,7 +192,7 @@ class Mac(Character):
         wanted_move = (self.position[0][0] - 45, self.position[0][1])
         possible_move = self.list_move
         if wanted_move in possible_move:
-            if wanted_move == possible_move[-1]:
+            if wanted_move == self.enemy[0]:
                 if self.safe == False:
                     print("go start")
                 else:
@@ -211,7 +213,7 @@ class Mac(Character):
         wanted_move = (self.position[0][0] + 45, self.position[0][1])
         possible_move = self.list_move
         if wanted_move in possible_move:
-            if wanted_move == possible_move[-1]:
+            if wanted_move == self.enemy[0]:
                 if self.safe == False:
                     print("go start")
                 else:

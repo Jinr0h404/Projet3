@@ -24,7 +24,7 @@ def main():
 
     """generate character"""
     bad_guy = logic.logic.Badguy(game_map.list_badguy)
-    mac_gyver = logic.logic.Mac(game_map.list_start, game_map.list_floor, item_position)
+    mac_gyver = logic.logic.Mac(game_map, item_position)
     print(game_map.list_floor)
 
 
