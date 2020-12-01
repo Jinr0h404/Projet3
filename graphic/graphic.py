@@ -1,5 +1,6 @@
 import pygame
 import logic.logic
+import graphic.constant
 
 ############
 #CONSTANTES#
@@ -25,6 +26,7 @@ class Screen:
 class Game:
     def __init__(self):
         pygame.init()
+        
 
     def run(self, logic, mac, bad, item, screen):
         #pygame.init()
@@ -39,42 +41,32 @@ class Game:
         #affichage inventaire#
         font = pygame.font.Font(None, 24)
         text = font.render("inventaire \n Ether: {} \n Tube: {} \n Aiguille: {}".format('0','0','0'), 1, (250, 250, 250))
-        
 
-        picture_macgy = pygame.image.load("data/MacGyver.png").convert_alpha() # cherche et tranforme l'image en surface puis la converti
-        picture_badguy = pygame.image.load("data/gardien.png").convert_alpha()
-        picture_floor = pygame.image.load("data/floor15.png").convert_alpha()
-        picture_wall = pygame.image.load("data/wall15.png").convert_alpha()
-        picture_finish = pygame.image.load("data/stair45.png").convert_alpha()
-        picture_tube = pygame.image.load("data/tube45.png").convert_alpha()
-        picture_aiguille = pygame.image.load("data/aiguille45.png").convert_alpha()
-        picture_ether = pygame.image.load("data/ether45.png").convert_alpha()
-        picture_rip = pygame.image.load("data/rip.png").convert_alpha()
 
         continuer = True
 
         while continuer: 
             screen_size.fill(black) # definit une couleur de fond pour l'screen_size
             for element in logic.list_wall:
-                screen_size.blit(picture_wall, element)
+                screen_size.blit(graphic.constant.picture_wall, element)
             for element in logic.list_floor:
-                screen_size.blit(picture_floor, element) # blit copie l'image_surface en parametre sur la surface de l'screen_size
+                screen_size.blit(graphic.constant.picture_floor, element) # blit copie l'image_surface en parametre sur la surface de l'screen_size
             for element in logic.list_start:
-                screen_size.blit(picture_floor, element)
+                screen_size.blit(graphic.constant.picture_floor, element)
             for element in logic.list_finish:
-                screen_size.blit(picture_floor, element)
-                screen_size.blit(picture_finish, element)
+                screen_size.blit(graphic.constant.picture_floor, element)
+                screen_size.blit(graphic.constant.picture_finish, element)
             for element in bad.position:
                 if mac.position == bad.position and mac.safe == True:
-                    screen_size.blit(picture_rip, element)
+                    screen_size.blit(graphic.constant.picture_rip, element)
                 else:
-                    screen_size.blit(picture_badguy, element)
-            screen_size.blit(picture_ether, item["ether"])
-            screen_size.blit(picture_aiguille, item["aiguille"])
-            screen_size.blit(picture_tube, item["tube"])
+                    screen_size.blit(graphic.constant.picture_badguy, element)
+            screen_size.blit(graphic.constant.picture_ether, item["ether"])
+            screen_size.blit(graphic.constant.picture_aiguille, item["aiguille"])
+            screen_size.blit(graphic.constant.picture_tube, item["tube"])
             screen_size.blit(text, (0,680))
             for element in mac.position:
-                screen_size.blit(picture_macgy, element)
+                screen_size.blit(graphic.constant.picture_macgy, element)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     continuer = False
