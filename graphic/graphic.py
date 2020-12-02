@@ -21,7 +21,7 @@ class Screen:
         screen_size = pygame.display.set_mode(self.screen_size)
         pygame.display.set_caption(self.title)
         picture_menu = pygame.image.load(self.picture_title).convert_alpha()
-        pygame.display.set_icon(self.picture_title)
+        pygame.display.set_icon(picture_menu)
 
 class Game:
     def __init__(self):
@@ -41,6 +41,8 @@ class Game:
         #affichage inventaire#
         font = pygame.font.Font(None, 24)
         text = font.render("inventaire \n Ether: {} \n Tube: {} \n Aiguille: {}".format('0','0','0'), 1, (250, 250, 250))
+        for key, value in mac.item.items():
+            pass
 
 
         continuer = True
