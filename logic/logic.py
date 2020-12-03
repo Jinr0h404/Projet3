@@ -234,7 +234,9 @@ class Mac(Character):
 class Badguy(Character):
 
     def __init__(self, position):
-        Character.__init__(self, "BadGuy", position)
+        self.list_move = position.list_floor
+        self.keep_move = []
+        Character.__init__(self, "BadGuy", position.list_badguy)
 
 
 class Item:

@@ -23,10 +23,8 @@ def main():
     item_position = item.position_random
 
     """generate character"""
-    bad_guy = logic.logic.Badguy(game_map.list_badguy)
+    bad_guy = logic.logic.Badguy(game_map)
     mac_gyver = logic.logic.Mac(game_map, item_position)
-    print(game_map.list_floor)
-
 
 
     """generate graphic setting"""
