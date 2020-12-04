@@ -28,9 +28,9 @@ def main():
 
 
     """generate graphic setting"""
-    screen = graphic.graphic.Screen()
+#    screen = graphic.graphic.Screen()
     play = graphic.graphic.Game()
-    play.run(game_map, mac_gyver, bad_guy, item_position, screen)
+    play.run(game_map, mac_gyver, bad_guy, item_position) #screen)
 
 if __name__ == "__main__":  #execute la fonction main de ce fichier si il est
     main()                  #lancer commer programme principal et non importé

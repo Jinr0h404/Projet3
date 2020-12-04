@@ -1,5 +1,13 @@
 import pygame
 
+############
+#CONSTANTES#
+############
+
+black = (10, 10, 10)
+white = (230, 230, 230)
+
+
 picture_macgy = pygame.image.load("data/MacGyver.png")
 picture_badguy = pygame.image.load("data/gardien.png")
 picture_floor = pygame.image.load("data/floor15.png")
