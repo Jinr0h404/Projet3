@@ -28,7 +28,7 @@ def main():
 
 
     """generate graphic setting"""
-#    screen = graphic.graphic.Screen()
+#   screen = graphic.graphic.Screen()
     play = graphic.graphic.Game()
     play.run(game_map, mac_gyver, bad_guy, item_position) #screen)
 

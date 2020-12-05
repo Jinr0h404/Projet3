@@ -236,7 +236,16 @@ class Badguy(Character):
     def __init__(self, position):
         self.list_move = position.list_floor
         self.keep_move = []
+        self._field_view = []
         Character.__init__(self, "BadGuy", position.list_badguy)
+    @property
+    def field_of_view(self):
+        keep_move = [(self.position[0][0] + 45, self.position[0][1]), (self.position[0][0] - 45, self.position[0][1]), (self.position[0][0], self.position[0][1] + 45), (self.position[0][0], self.position[0][1] - 45)]
+        possible_move = self.list_move
+        for element in keep_move:
+            if element in possible_move:
+                self._field_view.append(element)
+        return self._field_view
 
 
 class Item:

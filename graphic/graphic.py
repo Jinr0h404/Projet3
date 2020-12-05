@@ -54,10 +54,8 @@ class Game:
                 self.screen.blit(graphic.constant.picture_floor, element)
                 self.screen.blit(graphic.constant.picture_finish, element)
             
-            if mac.position == bad.position and mac.safe == True:
+            if (mac.position[0] in bad.field_of_view) and mac.safe == True:
                 bad_state = False
-            #if (mac.move_down() == bad.position or mac.move_up() == bad.position or mac.move_right() == bad.position or mac.move_left() == bad.position) and mac.safe == True:
-                #bad_state = False
             if bad_state == False:
                 for element in bad.position:
                     self.screen.blit(graphic.constant.picture_rip, element)
