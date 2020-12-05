@@ -19,8 +19,8 @@ import graphic.constant
 class Game:
     def __init__(self):
         self.screen_size = (675, 705)
-        self.title = "Help MacGyver"
-        self.picture_title = "data/projet_3.png"
+        self.title = graphic.constant.game_title
+        self.picture_title = graphic.constant.picture_title
         pygame.init()
         self.screen = pygame.display.set_mode(self.screen_size)
         pygame.display.set_caption(self.title)
