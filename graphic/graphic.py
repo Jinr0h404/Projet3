@@ -4,9 +4,9 @@ import graphic.constant
 
 
 
-#class Screen:
+#class Screen_menu:
 #    def __init__(self):
-#        self.screen_size = (675, 705)
+#        self.screen_size = (500, 500)
 #        self.title = "Help MacGyver"
 #        self.picture_title = "data/projet_3.png"
 
@@ -27,6 +27,12 @@ class Game:
         picture_menu = pygame.image.load(self.picture_title).convert_alpha()
         pygame.display.set_icon(picture_menu)
 
+    def inventory(self, mac):
+        font = pygame.font.Font(None, 24)
+        text = font.render("   inventaire:      Ether :  {}   Tube :  {}   Aiguille :  {}".format(mac.item['ether'], mac.item['tube'],mac.item['aiguille']), 1, (graphic.constant.white))
+        self.screen.blit(text, (0,680))
+
+
     def run(self, logic, mac, bad, item): #screen):
 
         for key, value in mac.item.items():
@@ -38,11 +44,7 @@ class Game:
 
         while continuer: 
             self.screen.fill(graphic.constant.black) # definit une couleur de fond pour l'screen_size
-
-            #affichage inventaire#
-            font = pygame.font.Font(None, 24)
-            text = font.render("inventaire:  Ether: {}   Tube: {}   Aiguille: {}".format(mac.item['ether'], mac.item['tube'],mac.item['aiguille']), 1, (graphic.constant.white))
-
+            self.inventory(mac)
             #screen_game_rect.fill(white)
             for element in logic.list_wall:
                 self.screen.blit(graphic.constant.picture_wall, element)
@@ -53,7 +55,7 @@ class Game:
             for element in logic.list_finish:
                 self.screen.blit(graphic.constant.picture_floor, element)
                 self.screen.blit(graphic.constant.picture_finish, element)
-            
+
             if (mac.position[0] in bad.field_of_view) and mac.safe == True:
                 bad_state = False
             if bad_state == False:
@@ -62,15 +64,20 @@ class Game:
             else:
                 for element in bad.position:
                     self.screen.blit(graphic.constant.picture_badguy, element)
+
             if mac.item['ether'] == False:
                 self.screen.blit(graphic.constant.picture_ether, item["ether"])
             if mac.item['aiguille'] == False:
                 self.screen.blit(graphic.constant.picture_aiguille, item["aiguille"])
             if mac.item['tube'] == False:
                 self.screen.blit(graphic.constant.picture_tube, item["tube"])
-            self.screen.blit(text, (0,680))
-            for element in mac.position:
-                self.screen.blit(graphic.constant.picture_macgy, element)
+                
+            if (mac.position[0] in bad.field_of_view) and mac.safe == False:
+                for element in mac.position:
+                    self.screen.blit(graphic.constant.picture_rip, element)
+            else:
+                for element in mac.position:
+                    self.screen.blit(graphic.constant.picture_macgy, element)
             #screen_size.blit(screen_game_rect, screen_game)
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

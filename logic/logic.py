@@ -138,6 +138,8 @@ class Mac(Character):
         self.safe = False
         self.item_pos = item_pos
         self.enemy = position.list_badguy
+        self.finish_pos = position.list_finish
+        self.free = False
         Character.__init__(self, "MacGyver", position.list_start)
         # move methode check if sprite is with an item, if yes, change
         # value of dict "item" to true with item key
@@ -162,6 +164,9 @@ class Mac(Character):
             if all(value == True for value in self.item.values()):
                 self.safe = True
                 print(self.safe)
+            if self.position == self.finish_pos:
+                self.free = True
+                print(self.free, "bingo Bingo Bingo")
                     
         else:
             print("si seulement j'avais mon couteau pour percer ce mur") 
@@ -184,6 +189,9 @@ class Mac(Character):
             if all(value == True for value in self.item.values()):
                 self.safe = True
                 print(self.safe)
+            if self.position == self.finish_pos:
+                self.free = True
+                print(self.free, "bingo Bingo Bingo")
         else:
             print("si seulement j'avais mon couteau pour percer ce mur") 
         return self.position
@@ -205,6 +213,9 @@ class Mac(Character):
             if all(value == True for value in self.item.values()):
                 self.safe = True
                 print(self.safe)
+            if self.position == self.finish_pos:
+                self.free = True
+                print(self.free, "bingo Bingo Bingo")
         else:
             print("si seulement j'avais mon couteau pour percer ce mur") 
         return self.position
@@ -226,6 +237,9 @@ class Mac(Character):
             if all(value == True for value in self.item.values()):
                 self.safe = True
                 print(self.safe)
+            if self.position == self.finish_pos:
+                self.free = True
+                print(self.free, "bingo Bingo Bingo")
         else:
             print("si seulement j'avais mon couteau pour percer ce mur") 
         return self.position
@@ -235,7 +249,6 @@ class Badguy(Character):
 
     def __init__(self, position):
         self.list_move = position.list_floor
-        self.keep_move = []
         self._field_view = []
         Character.__init__(self, "BadGuy", position.list_badguy)
     @property
