@@ -1,18 +1,18 @@
 import pygame
 
 ############
-#CONSTANTES#
+# CONSTANTES#
 ############
 
-#background color
+# background color
 black = (10, 10, 10)
 white = (230, 230, 230)
 
-#Game Screen
+# Game Screen
 game_title = "Help MacGyver"
 picture_title = "data/projet_3.png"
 
-#In Game Picure
+# In Game Picure
 picture_macgy = pygame.image.load("data/MacGyver.png")
 picture_badguy = pygame.image.load("data/gardien.png")
 picture_floor = pygame.image.load("data/floor15.png")
