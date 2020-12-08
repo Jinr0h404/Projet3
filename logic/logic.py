@@ -164,7 +164,7 @@ class Mac(Character):
             if all(value == True for value in self.item.values()):
                 self.safe = True
                 print(self.safe)
-            if self.position == self.finish_pos:
+            if self.position == self.finish_pos and self.safe == True:
                 self.free = True
                 print(self.free, "bingo Bingo Bingo")
                     
@@ -189,11 +189,11 @@ class Mac(Character):
             if all(value == True for value in self.item.values()):
                 self.safe = True
                 print(self.safe)
-            if self.position == self.finish_pos:
-                self.free = True
-                print(self.free, "bingo Bingo Bingo")
         else:
-            print("si seulement j'avais mon couteau pour percer ce mur") 
+            print("si seulement j'avais mon couteau pour percer ce mur")
+        if self.position == self.finish_pos and self.safe == True:
+                self.free = True
+                print(self.free, "bingo Bingo Bingo") 
         return self.position
 
     def move_left(self):
@@ -213,7 +213,7 @@ class Mac(Character):
             if all(value == True for value in self.item.values()):
                 self.safe = True
                 print(self.safe)
-            if self.position == self.finish_pos:
+            if self.position == self.finish_pos and self.safe == True:
                 self.free = True
                 print(self.free, "bingo Bingo Bingo")
         else:
@@ -237,11 +237,11 @@ class Mac(Character):
             if all(value == True for value in self.item.values()):
                 self.safe = True
                 print(self.safe)
-            if self.position == self.finish_pos:
-                self.free = True
-                print(self.free, "bingo Bingo Bingo")
         else:
             print("si seulement j'avais mon couteau pour percer ce mur") 
+        if self.position == self.finish_pos and self.safe == True:
+                self.free = True
+                print(self.free, "bingo Bingo Bingo")
         return self.position
 
 

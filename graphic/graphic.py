@@ -28,6 +28,14 @@ class Game:
         )
         self.screen.blit(text, (0, 680))
 
+    def item_pos(self, mac, item):
+        if mac.item["ether"] == False:
+            self.screen.blit(graphic.constant.picture_ether, item["ether"])
+        if mac.item["aiguille"] == False:
+            self.screen.blit(graphic.constant.picture_aiguille, item["aiguille"])
+        if mac.item["tube"] == False:
+            self.screen.blit(graphic.constant.picture_tube, item["tube"])
+
     def graph_move(self, mac):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -87,20 +95,32 @@ class Game:
             else:
                 for element in bad.position:
                     self.screen.blit(graphic.constant.picture_badguy, element)
-
-            if mac.item["ether"] == False:
-                self.screen.blit(graphic.constant.picture_ether, item["ether"])
-            if mac.item["aiguille"] == False:
-                self.screen.blit(graphic.constant.picture_aiguille, item["aiguille"])
-            if mac.item["tube"] == False:
-                self.screen.blit(graphic.constant.picture_tube, item["tube"])
-
+            self.item_pos(mac, item)
             if (mac.position[0] in bad.field_of_view) and mac.safe == False:
                 for element in mac.position:
                     self.screen.blit(graphic.constant.picture_rip, element)
+                    font_victory = pygame.font.Font(None, 36)
+                    test = pygame.Surface((300,200))
+                    testB = test.get_rect()
+                    testB.center = (337,337)
+                    vicory_text_surface = font_victory.render("You lose !!!", 1, graphic.constant.white)
+                    victory_text_rect = vicory_text_surface.get_rect()
+                    victory_text_rect.center = (337, 337)
+                    self.screen.blit(test, testB)
+                    self.screen.blit(vicory_text_surface, victory_text_rect)
             else:
                 for element in mac.position:
                     self.screen.blit(graphic.constant.picture_macgy, element)
+                    if mac.free == True:
+                        font_victory = pygame.font.Font(None, 36)
+                        test = pygame.Surface((300,200))
+                        testB = test.get_rect()
+                        testB.center = (337,337)
+                        vicory_text_surface = font_victory.render("You are free !!!", 1, graphic.constant.white)
+                        victory_text_rect = vicory_text_surface.get_rect()
+                        victory_text_rect.center = (337, 337)
+                        self.screen.blit(test, testB)
+                        self.screen.blit(vicory_text_surface, victory_text_rect)
 
             self.graph_move(mac)
 
