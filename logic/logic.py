@@ -42,13 +42,10 @@ class Map:
         list_floor_position = []
         for i in self.list_zone:       # pour chaque element de ma liste de dictionnaire
             dico = i
-            #print(dico)
             for i in dico.values(): # je recupere la valeur de mon dico
-                #print(i)
                 if i != "X":
                     for key in dico.keys():
                         list_floor_position.append(key)   # et je met la clef du dico donc sa position dans la liste des positions de sol
-                        #list_possible_position.append(key)
         self._pos_floor = list_floor_position
         return self._pos_floor
     
@@ -61,7 +58,6 @@ class Map:
                 if i == "X":
                     for key in dico.keys():
                         list_wall_position.append(key)   # et je met la clef du dico donc sa position dans la liste des positions de sol
-                        #list_possible_position.append(key)
         self._pos_wall = list_wall_position
         return self._pos_wall
 
@@ -74,7 +70,6 @@ class Map:
                 if i == "D":
                     for key in dico.keys():
                         list_start_position.append(key)   # et je met la clef du dico donc sa position dans la liste des positions de sol
-                        #list_possible_position.append(key)
         self._pos_start = list_start_position
         return self._pos_start
 
@@ -87,7 +82,6 @@ class Map:
                 if i == "A":
                     for key in dico.keys():
                         list_finish_position.append(key)   # et je met la clef du dico donc sa position dans la liste des positions de sol
-                        #list_possible_position.append(key)
         self._pos_finish = list_finish_position
         return self._pos_finish
 
@@ -100,7 +94,6 @@ class Map:
                 if i == "B":
                     for key in dico.keys():
                         list_badguy_position.append(key)   # et je met la clef du dico donc sa position dans la liste des positions de sol
-                        #list_possible_position.append(key)
         self._pos_badguy = list_badguy_position
         return self._pos_badguy
 
@@ -110,13 +103,10 @@ class Map:
         list_item_position = []
         for i in self.list_zone:       # pour chaque element de ma liste de dictionnaire
             dico = i
-            #print(dico)
             for i in dico.values(): # je recupere la valeur de mon dico
-                #print(i)
                 if i == "O":
                     for key in dico.keys():
                         list_item_position.append(key)   # et je met la clef du dico donc sa position dans la liste des positions de sol
-                        #list_possible_position.append(key)
         self._pos_item = list_item_position
         return self._pos_item
 
@@ -156,20 +146,13 @@ class Mac(Character):
                 else:
                     print("bingo")
             self.position = [wanted_move] #if position define by list of 2 item abs and ordo
-            print(self.enemy)
             for key, value in self.item_pos.items():
                 if value == self.position[0]:
                     self.item[key] = True
-                    print(self.item)
             if all(value == True for value in self.item.values()):
                 self.safe = True
-                print(self.safe)
             if self.position == self.finish_pos and self.safe == True:
                 self.free = True
-                print(self.free, "bingo Bingo Bingo")
-                    
-        else:
-            print("si seulement j'avais mon couteau pour percer ce mur") 
         return self.position
 
     def move_down(self):
@@ -188,12 +171,8 @@ class Mac(Character):
                     print(self.item)
             if all(value == True for value in self.item.values()):
                 self.safe = True
-                print(self.safe)
-        else:
-            print("si seulement j'avais mon couteau pour percer ce mur")
         if self.position == self.finish_pos and self.safe == True:
                 self.free = True
-                print(self.free, "bingo Bingo Bingo") 
         return self.position
 
     def move_left(self):
@@ -215,9 +194,6 @@ class Mac(Character):
                 print(self.safe)
             if self.position == self.finish_pos and self.safe == True:
                 self.free = True
-                print(self.free, "bingo Bingo Bingo")
-        else:
-            print("si seulement j'avais mon couteau pour percer ce mur") 
         return self.position
 
     def move_right(self):
@@ -236,12 +212,8 @@ class Mac(Character):
                     print(self.item)
             if all(value == True for value in self.item.values()):
                 self.safe = True
-                print(self.safe)
-        else:
-            print("si seulement j'avais mon couteau pour percer ce mur") 
         if self.position == self.finish_pos and self.safe == True:
                 self.free = True
-                print(self.free, "bingo Bingo Bingo")
         return self.position
 
 
