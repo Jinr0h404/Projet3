@@ -86,6 +86,7 @@ class Game:
             for element in logic.list_finish:
                 self.screen.blit(graphic.constant.picture_floor, element)
                 self.screen.blit(graphic.constant.picture_finish, element)
+            self.graph_move(mac)
 
             if (mac.position[0] in bad.field_of_view) and mac.safe == True:
                 bad_state = False
@@ -96,8 +97,10 @@ class Game:
                 for element in bad.position:
                     self.screen.blit(graphic.constant.picture_badguy, element)
             self.item_pos(mac, item)
+            mac_lose = False
             if (mac.position[0] in bad.field_of_view) and mac.safe == False:
                 for element in mac.position:
+                    mac_lose = True
                     self.screen.blit(graphic.constant.picture_rip, element)
                     font_victory = pygame.font.Font(None, 36)
                     test = pygame.Surface((300,200))
@@ -108,6 +111,11 @@ class Game:
                     victory_text_rect.center = (337, 337)
                     self.screen.blit(test, testB)
                     self.screen.blit(vicory_text_surface, victory_text_rect)
+                    pygame.display.flip()
+                    while mac_lose:
+                        for event in pygame.event.get():
+                            if event.type == pygame.QUIT:
+                                pygame.quit()
             else:
                 for element in mac.position:
                     self.screen.blit(graphic.constant.picture_macgy, element)
@@ -121,8 +129,11 @@ class Game:
                         victory_text_rect.center = (337, 337)
                         self.screen.blit(test, testB)
                         self.screen.blit(vicory_text_surface, victory_text_rect)
-
-            self.graph_move(mac)
+                        pygame.display.flip()
+                        while mac.free:
+                            for event in pygame.event.get():
+                                if event.type == pygame.QUIT:
+                                    pygame.quit()
 
 
             pygame.display.flip()  # dit à pygame d'afficher la surface du jeu
