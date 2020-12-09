@@ -1,13 +1,8 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
-import pygame
-import random
 import logic.logic
 import graphic.graphic
-
-
-
 
 
 def main():
@@ -17,7 +12,6 @@ def main():
     """generate all zone map with the file txt of the labyrinth"""
     game_map_position = game_map.area("data/level/laby.txt")
 
-
     """generate item"""
     item = logic.logic.Item(game_map.list_item)
     item_position = item.position_random
@@ -26,10 +20,10 @@ def main():
     bad_guy = logic.logic.Badguy(game_map)
     mac_gyver = logic.logic.Mac(game_map, item_position)
 
-
     """generate graphic setting"""
     play = graphic.graphic.Game()
-    play.run(game_map, mac_gyver, bad_guy, item_position) #screen)
+    play.run(game_map, mac_gyver, bad_guy, item_position)  # screen)
 
-if __name__ == "__main__":  #execute la fonction main de ce fichier si il est
-    main()                  #lancer commer programme principal et non importé
+
+if __name__ == "__main__":  # execute la fonction main de ce fichier si il est
+    main()  # lancer commer programme principal et non importé
