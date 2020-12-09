@@ -56,7 +56,7 @@ class Game:
         while self.play:
             self.screen.fill(
                 graphic.constant.black
-            )  # definit une couleur de fond pour l'screen_size
+            )  # define background color for screen surface
             self.inventory(mac)
             # screen_game_rect.fill(white)
             for element in logic.list_wall:
