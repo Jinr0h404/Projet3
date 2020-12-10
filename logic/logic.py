@@ -5,7 +5,7 @@ import random
 
 
 class Map:
-    """there is one level but if we want other in futur, use a class for
+    """there is one level but if we want other in futur, use this class for
     generate other map"""
 
     def __init__(self):
@@ -20,7 +20,10 @@ class Map:
 
     def area(self, area):
         """ generate a list of dict where keys = position abs and ordo and
-        values the caracter in labyrinth file"""
+        values the caracter in labyrinth file.txt. this method convert each
+        line in the file.txt. with loop converts each line of the file to
+        an item in a list. each item of the list has an y axes position and
+        each element of the item has an x axes position """
         with open(area, "r") as map_file:
             zone = map_file.read().split()
             list_zone = []
@@ -44,11 +47,11 @@ class Map:
             self.list_zone = list_zone
             return list_zone
 
-    """method to assign position to an object in first we search
-    each position is floor(all except wall)"""
-
     @property
     def list_floor(self):
+        """method to define a list of position according to the character in
+        the labyrinth file. first search each position on the ground (all
+        except the wall)"""
         list_floor_position = []
         for i in self.list_zone:  # for each element in my dict list
             dico = i
@@ -117,11 +120,11 @@ class Map:
         self._pos_badguy = list_badguy_position
         return self._pos_badguy
 
-    """method to assign position to an object in first we search each position
-     is possible(not wall or start or finish or badguy pos)"""
-
     @property
     def list_item(self):
+        """method to define list of possible position for an object in first
+        we search each position is possible(not wall or start or finish or
+        badguy pos)"""
         list_item_position = []
         for i in self.list_zone:
             dico = i

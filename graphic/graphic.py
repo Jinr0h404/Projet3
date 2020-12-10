@@ -20,7 +20,9 @@ class Game:
         text = font.render(
             "   inventaire:      Ether :  {}\
             Tube :  {}        Aiguille :  {}".format(
-                int(mac.item["ether"]), int(mac.item["tube"]), int(mac.item["aiguille"])
+                int(mac.item["ether"]),
+                int(mac.item["tube"]),
+                int(mac.item["aiguille"])
             ),
             1,
             (graphic.constant.white),
@@ -29,11 +31,14 @@ class Game:
 
     def item_pos(self, mac, item):
         if mac.item["ether"] is False:
-            self.screen.blit(graphic.constant.picture_ether, item["ether"])
+            self.screen.blit(
+                graphic.constant.picture_ether, item["ether"])
         if mac.item["aiguille"] is False:
-            self.screen.blit(graphic.constant.picture_aiguille, item["aiguille"])
+            self.screen.blit(
+                graphic.constant.picture_aiguille, item["aiguille"])
         if mac.item["tube"] is False:
-            self.screen.blit(graphic.constant.picture_tube, item["tube"])
+            self.screen.blit(
+                graphic.constant.picture_tube, item["tube"])
 
     def graph_move(self, mac):
         for event in pygame.event.get():
