@@ -148,6 +148,10 @@ class Character:
 
 
 class Mac(Character):
+    """the Mac class is inherited from the character class and takes as an
+    attribute the list of objects for the inventory, the list of floor tiles,
+    the position of the bad guy and the boolean ones to know if he can escape
+    or not"""
     def __init__(self, position, item_pos):
         self.item = {"aiguille": False, "ether": False, "tube": False}
         self.list_move = position.list_floor
@@ -157,12 +161,13 @@ class Mac(Character):
         self.finish_pos = position.list_finish
         self.free = False
         Character.__init__(self, "MacGyver", position.list_start)
-        # move methode check if sprite is with an item, if yes, change
-        # value of dict "item" to true with item key
-        # for the last move if all item value != True, it's lost
 
     def move_up(self):
-        # position list for mac have just 1 element, tuple. change valeur of Y
+        """position list for mac have just 1 element, tuple. For move up or
+        down: change valu of Y. For move right or left, change value of X
+        move methode check if sprite is with an item, if yes, change
+        value of dict "item" to true with item key. for the last move if all
+        item value != True, it's lost"""
         wanted_move = (self.position[0][0], self.position[0][1] - 45)
         possible_move = self.list_move
         if wanted_move in possible_move:
@@ -173,7 +178,9 @@ class Mac(Character):
                     print("bingo")
             self.position = [
                 wanted_move
-            ]  # if position define by list of 2 item abs and ordo
+            ]
+            """for each movement we check if there is an item on the new tile
+            and change value of bool in the inventory list"""
             for key, value in self.item_pos.items():
                 if value == self.position[0]:
                     self.item[key] = True
@@ -243,6 +250,9 @@ class Mac(Character):
 
 
 class Badguy(Character):
+    """badguy class is inherited from the character class and takes as an
+    attribute the list of possible move and an empty list for possible
+    positions in the badguy field of view (contiguous tiles)"""
     def __init__(self, position):
         self.list_move = position.list_floor
         self._field_view = []
@@ -250,6 +260,8 @@ class Badguy(Character):
 
     @property
     def field_of_view(self):
+        """check if the contiguous tiles are in the list of possible paths
+        and if so, add them to the list"""
         keep_move = [
             (self.position[0][0] + 45, self.position[0][1]),
             (self.position[0][0] - 45, self.position[0][1]),
@@ -264,14 +276,15 @@ class Badguy(Character):
 
 
 class Item:
+    """this class generate a list of 3 item for help Hero to get out"""
     def __init__(self, list_possible_position):
         self.position = list_possible_position
         self._position_item = []
 
-    """generate item with random position"""
-
     @property
     def position_random(self):
+        """random.sample take 3 random position in possible_position list and
+        add new position in the position_item attribute"""
         position_random = random.sample(self.position, 3)
         liste_pos_item = {
             "ether": position_random[0],

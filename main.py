@@ -25,5 +25,6 @@ def main():
     play.run(game_map, mac_gyver, bad_guy, item_position)
 
 
-if __name__ == "__main__":  # execute la fonction main de ce fichier si il est
-    main()  # lancer commer programme principal et non importé
+if __name__ == "__main__":
+    """execute main function of thie file if he is run like main program"""
+    main()
