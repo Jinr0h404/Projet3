@@ -10,7 +10,7 @@ def main():
     game_map = logic.logic.Map()
 
     """generate all zone map with the file txt of the labyrinth"""
-    game_map_position = game_map.area("data/level/laby.txt")
+    game_map.area("data/level/laby.txt")
 
     """generate item"""
     item = logic.logic.Item(game_map.list_item)

@@ -45,7 +45,6 @@ class Map:
                 ordo_map += 1
                 abs_map = 0
             self.list_zone = list_zone
-            return list_zone
 
     @property
     def list_floor(self):
