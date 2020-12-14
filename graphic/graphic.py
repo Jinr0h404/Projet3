@@ -3,6 +3,8 @@ import graphic.constant
 
 
 class Game:
+    """this class manages the displayof the game. It takes as attribute
+    basic info like title and size of the game screen"""
     def __init__(self):
         self.screen_size = (675, 705)
         self.title = graphic.constant.game_title
@@ -16,10 +18,12 @@ class Game:
         self.end = False
 
     def inventory(self, mac):
+        """method to display inventory on a text surface"""
         font = pygame.font.Font(None, 24)
         text = font.render(
             "   inventaire:      Ether :  {}\
             Tube :  {}        Aiguille :  {}".format(
+                # int() permet de transformer mon booleen en en valeur 0 ou 1
                 int(mac.item["ether"]),
                 int(mac.item["tube"]),
                 int(mac.item["aiguille"])
@@ -30,6 +34,9 @@ class Game:
         self.screen.blit(text, (0, 680))
 
     def item_pos(self, mac, item):
+        """method to display or not the surfaces representing the object.
+        Know if I should display an object by looking at the values of my
+        key in the Macgyver object dictionary"""
         if mac.item["ether"] is False:
             self.screen.blit(
                 graphic.constant.picture_ether, item["ether"])
@@ -41,6 +48,7 @@ class Game:
                 graphic.constant.picture_tube, item["tube"])
 
     def graph_move(self, mac):
+        """ method to interact with the user's keybord actions for move"""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.play = False
@@ -55,7 +63,8 @@ class Game:
                     mac.move_left()
 
     def run(self, logic, mac, bad, item):
-
+        """main method of the graphic part. It displays the game by taking
+        the various graphic and logical elements as parameter"""
         bad_state = True
 
         while self.play:
