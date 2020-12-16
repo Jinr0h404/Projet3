@@ -72,7 +72,6 @@ class Game:
                 graphic.constant.black
             )  # define background color for screen surface
             self.inventory(mac)
-            # screen_game_rect.fill(white)
             for element in logic.list_wall:
                 self.screen.blit(graphic.constant.picture_wall, element)
             for element in logic.list_floor:
