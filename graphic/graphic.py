@@ -68,11 +68,13 @@ class Game:
         bad_state = True
 
         while self.play:
+            """loop game, while condition is true, screen game is display"""
             self.screen.fill(
                 graphic.constant.black
             )  # define background color for screen surface
             self.inventory(mac)
             for element in logic.list_wall:
+                # loop for display tile on screen
                 self.screen.blit(graphic.constant.picture_wall, element)
             for element in logic.list_floor:
                 self.screen.blit(

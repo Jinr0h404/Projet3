@@ -7,7 +7,7 @@ a virtual environment to avoid conflicts with other version of libraries.
 
 
 ### pre requirement
-to start the game:
+to start the game, you need:
 * Python
 * Pygame library
 
@@ -19,7 +19,7 @@ https://github.com/Jinr0h404/Projet3.git
 
 You can dowload zip file or dowload with the url and Git:
 - create new folder for Project, with Git in root of the folder
-- Make git clone url/project
+- Make git clone https://github.com/Jinr0h404/Projet3.git
 
 2) If you don't have it: Install Python 3.9 and Pygame version in requirement file.
 You will find the sources for Python here:
