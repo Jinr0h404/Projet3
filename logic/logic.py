@@ -1,6 +1,10 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
+""" the logic module contains the different classes and methods to manage
+the logic of the game"""
+
+
 import random
 
 

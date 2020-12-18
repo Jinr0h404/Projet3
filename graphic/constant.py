@@ -1,5 +1,8 @@
 import pygame
 
+""" the constant module contains the fixed variables used in the graphics
+part"""
+
 ############
 # CONSTANTES#
 ############

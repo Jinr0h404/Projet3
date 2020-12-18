@@ -1,6 +1,10 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
+""" the main is used to start the game, it creates the starting
+elements and gives logic to graphic"""
+
+
 import logic.logic
 import graphic.graphic
 

@@ -2,6 +2,10 @@ import pygame
 import graphic.constant
 
 
+""" the graphic module contains the different classes and methods to manage
+the display of the game"""
+
+
 class Game:
     """this class manages the displayof the game. It takes as attribute
     basic info like title and size of the game screen"""
