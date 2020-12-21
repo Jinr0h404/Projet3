@@ -3,3 +3,4 @@ Pipfile.lock
 testPygame
 projetB.py
 projetC.py
+__pycache__
