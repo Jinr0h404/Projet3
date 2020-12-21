@@ -102,6 +102,8 @@ class Game:
             self.item_pos(mac, item)
             mac_lose = False
             if (mac.position[0] in bad.field_of_view) and mac.safe is False:
+                """ test if Mac is in the Badguy field of vision and if he has
+                the item to pass. In function display Rip picture or not."""
                 for element in mac.position:
                     mac_lose = True
                     self.screen.blit(graphic.constant.picture_rip, element)
